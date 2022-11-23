@@ -29,8 +29,8 @@ function NewData() {
     }
 
     return (
-        <div>
-            <input ref={nameRef} placeholder='Name' />
+        <div className='new-data'>
+            <input ref={nameRef} type='text' placeholder='Name' />
             <input ref={ageRef} type='number' placeholder='Age' />
             <select ref={selectRef}>
                 <option value=''>Choose city</option>
