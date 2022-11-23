@@ -19,13 +19,13 @@ function TableHead() {
 
     const check = e => {
         const v = e.target.checked;
-        setIsCheck(!v);
+        setIsCheck(v);
     }
 
     return (
         <thead>
             <tr>
-                <th><input type='checkbox' onChange={e => { check(e); dispachData(checkAll_action(e.target.checked)); }} value={isCheck}></input></th>
+                <th><input type='checkbox' onChange={e => { check(e); dispachData(checkAll_action(e.target.checked)); }} checked={isCheck}></input></th>
                 <th>Name</th>
                 <th>Age</th>
                 <th>City</th>
