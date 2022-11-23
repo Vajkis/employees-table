@@ -18,7 +18,9 @@ function NewData() {
             name: nameRef.current.value,
             age: ageRef.current.value,
             city: selectRef.current.value,
-            deleted: false
+            deleted: false,
+            focus: false,
+            check: false
         }));
 
         nameRef.current.value = '';

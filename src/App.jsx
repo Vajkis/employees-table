@@ -3,6 +3,7 @@ import { loadData_action } from './actions/dataActions';
 import './App.scss';
 import DataContext from './components/DataContext';
 import NewData from './components/NewData';
+import Table from './components/Table';
 import data_reducer from './reducers/dataReducer';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       dispachData
     }}>
       <NewData />
+      <Table />
     </DataContext.Provider>
   );
 }
