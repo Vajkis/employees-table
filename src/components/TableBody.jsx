@@ -8,7 +8,6 @@ function TableBody() {
     return (
         <tbody>
             {data?.map(e => {
-                console.log(e.check);
                 return (
                     <tr key={e.id}>
                         <td><input type='checkbox' onChange={e => { }} checked={e.check}></input></td>
