@@ -4,22 +4,23 @@ import DataContext from "./DataContext";
 
 function TableHead() {
 
+    const { dispachData, data } = useContext(DataContext);
+
     const [isCheck, setIsCheck] = useState(false);
 
-    const check = () => {
-        setIsCheck(c => !c);
+    const check = e => {
+        const c = e.target.checked;
+        setIsCheck(c);
     }
 
-    const { dispachData } = useContext(DataContext);
-
     useEffect(() => {
-        dispachData(checkAll_action(isCheck));
-    }, [isCheck, dispachData]);
+
+    }, [data]);
 
     return (
         <thead>
             <tr>
-                <th><input type='checkbox' onChange={check} value={isCheck}></input></th>
+                <th><input type='checkbox' onChange={e => { check(e); dispachData(checkAll_action(e.target.checked)) }} checked={isCheck}></input></th>
                 <th>Name</th>
                 <th>Age</th>
                 <th>City</th>
