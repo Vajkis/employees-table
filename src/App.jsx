@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import { loadData_action } from './actions/dataActions';
 import './App.scss';
 import DataContext from './components/DataContext';
@@ -9,6 +9,7 @@ import data_reducer from './reducers/dataReducer';
 function App() {
 
   const [data, dispachData] = useReducer(data_reducer, null);
+  const [isCheck, setIsCheck] = useState(false);
 
   useEffect(() => {
     dispachData(loadData_action());
@@ -17,7 +18,9 @@ function App() {
   return (
     <DataContext.Provider value={{
       data,
-      dispachData
+      dispachData,
+      isCheck,
+      setIsCheck
     }}>
       <NewData />
       <Table />
