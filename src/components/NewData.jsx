@@ -30,8 +30,8 @@ function NewData() {
 
     return (
         <div className='new-data'>
-            <input ref={nameRef} type='text' placeholder='Name' />
-            <input ref={ageRef} type='number' placeholder='Age' />
+            <input ref={nameRef} type='text' placeholder='Name' onKeyUp={e => e.key === 'Enter' && addNewEmployee()} />
+            <input ref={ageRef} type='number' placeholder='Age' onKeyUp={e => e.key === 'Enter' && addNewEmployee()} />
             <select ref={selectRef}>
                 <option value=''>Choose city</option>
                 <option value='Vilnius'>Vilnius</option>
