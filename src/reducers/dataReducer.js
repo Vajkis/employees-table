@@ -5,6 +5,7 @@ function data_reducer(state, action) {
 
     switch (action.type) {
         case addNewEmployee_const:
+            newState = newState?.map(e => ({ ...e, check: false }));
             newState = [...newState, action.payload];
             localStorage.setItem('data', JSON.stringify(newState));
             break;

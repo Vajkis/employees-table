@@ -13,6 +13,8 @@ function NewData() {
 
     const addNewEmployee = () => {
 
+
+
         dispachData(addNewEmployee_action({
             id: getId(),
             name: nameRef.current.value,

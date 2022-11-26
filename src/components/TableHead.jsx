@@ -16,6 +16,8 @@ function TableHead() {
             const checkData = [...data].filter(e => !e.deleted);
             if (data.length && !checkData.some(e => !e.check)) {
                 setIsCheck(true);
+            } else {
+                setIsCheck(false);
             }
         }
     }, [data, setIsCheck]);
