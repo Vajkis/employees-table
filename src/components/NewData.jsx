@@ -29,7 +29,7 @@ function NewData() {
     }
 
     return (
-        <form className='new-data'>
+        <div className='new-data'>
             <input ref={nameRef} type='text' placeholder='Name' />
             <input ref={ageRef} type='number' placeholder='Age' />
             <select ref={selectRef}>
@@ -39,7 +39,7 @@ function NewData() {
                 <option value='Klaipeda'>Klaipeda</option>
             </select>
             <button onClick={addNewEmployee}>Add employee</button>
-        </form>
+        </div>
     );
 }
 
