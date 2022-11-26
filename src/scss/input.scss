@@ -6,12 +6,6 @@ input {
     font: 400 18px Arial, Helvetica, sans-serif;
     color: #fff;
 
-    &[type=checkbox] {
-        margin: 3px;
-        width: 15px;
-        height: 15px;
-    }
-
     &[type=text],
     &[type=number] {
         width: 200px;

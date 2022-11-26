@@ -20,7 +20,12 @@ function TableBody() {
             {data?.map(e => {
                 return (
                     <tr key={e.id}>
-                        <td><input type='checkbox' onChange={event => check(e.id, event)} checked={e.check}></input></td>
+                        <td>
+                            <label className="checkbox">
+                                <input type='checkbox' onChange={event => check(e.id, event)} checked={e.check}></input>
+                                <div className="checkmark" />
+                            </label>
+                        </td>
                         <td>{e.name}</td>
                         <td>{e.age}</td>
                         <td>{e.city}</td>

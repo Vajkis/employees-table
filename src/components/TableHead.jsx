@@ -23,7 +23,12 @@ function TableHead() {
     return (
         <thead>
             <tr>
-                <th><input type='checkbox' onChange={e => { check(e); dispachData(checkAll_action(e.target.checked)) }} checked={isCheck}></input></th>
+                <th>
+                    <label className="checkbox">
+                        <input type='checkbox' onChange={e => { check(e); dispachData(checkAll_action(e.target.checked)) }} checked={isCheck}></input>
+                        <div className="checkmark" />
+                    </label>
+                </th>
                 <th>Name</th>
                 <th>Age</th>
                 <th>City</th>
