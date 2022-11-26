@@ -24,7 +24,8 @@ tbody {
 }
 
 th:first-child,
-td:first-child {
+td:first-child,
+th:last-child {
     display: flex;
 }
 
@@ -38,5 +39,9 @@ th {
 
     &:first-child {
         width: 20px;
+    }
+
+    &:last-child {
+        width: 150px;
     }
 }
