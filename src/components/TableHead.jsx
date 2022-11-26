@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { checkAll_action } from "../actions/dataActions";
+import { checkAll_action, deleteAllSelectedEmployees_action } from "../actions/dataActions";
 import DataContext from "./DataContext";
 
 function TableHead() {
@@ -14,11 +14,13 @@ function TableHead() {
     useEffect(() => {
         if (data) {
             const checkData = [...data].filter(e => !e.deleted);
-            if (data.length && !checkData.some(e => !e.check)) {
-                setIsCheck(true);
-            } else {
-                setIsCheck(false);
-            }
+            if (checkData.length) {                     // fix
+                if (!checkData.some(e => !e.check)) {   // fix
+                    setIsCheck(true);                   // fix
+                }                                       // fix
+            } else {                                    // fix
+                setIsCheck(false);                      // fix
+            }                                           // fix
         }
     }, [data, setIsCheck]);
 
@@ -34,6 +36,7 @@ function TableHead() {
                 <th>Name</th>
                 <th>Age</th>
                 <th>City</th>
+                <th><button onClick={() => dispachData(deleteAllSelectedEmployees_action())}>Delete all selected</button></th>
             </tr>
         </thead>
     );

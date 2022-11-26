@@ -18,7 +18,7 @@ function TableBody() {
     return (
         <tbody>
             {data?.map(e => {
-                return (
+                return !e.deleted && (
                     <tr key={e.id}>
                         <td>
                             <label className="checkbox">
@@ -29,6 +29,7 @@ function TableBody() {
                         <td>{e.name}</td>
                         <td>{e.age}</td>
                         <td>{e.city}</td>
+                        <td></td>
                     </tr>
                 )
             })}
