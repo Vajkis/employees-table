@@ -19,7 +19,7 @@ function NewData() {
         if (name && age && city) {
             dispachData(addNewEmployee_action({
                 id: getId(),
-                name: name[0].toUpperCase() + name.slice(1),
+                name: name[0].toUpperCase() + name.slice(1).toLowerCase(),  // fix
                 age,
                 city,
                 deleted: false,
