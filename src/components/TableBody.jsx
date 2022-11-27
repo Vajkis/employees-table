@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { checkEmployee_action } from "../actions/dataActions";
+import { checkEmployee_action, deleteEmployee_action } from "../actions/dataActions";
 import DataContext from "./DataContext";
 
 function TableBody() {
@@ -29,7 +29,7 @@ function TableBody() {
                         <td>{e.name}</td>
                         <td>{e.age}</td>
                         <td>{e.city}</td>
-                        <td></td>
+                        <td><button onClick={() => dispachData(deleteEmployee_action(e.id))}>Delete</button></td>
                     </tr>
                 )
             })}

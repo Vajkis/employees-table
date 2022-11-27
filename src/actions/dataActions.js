@@ -1,4 +1,4 @@
-import { addNewEmployee_const, checkAll_const, checkEmployee_const, deleteAllSelectedEmployees_const, loadData_const, sortEmployeesByAge_const } from "../constants/dataConstants";
+import { addNewEmployee_const, checkAll_const, checkEmployee_const, deleteAllSelectedEmployees_const, deleteEmployee_const, loadData_const, sortEmployeesByAge_const } from "../constants/dataConstants";
 
 export function addNewEmployee_action(newData) {
     return {
@@ -36,6 +36,13 @@ export function checkEmployee_action(id, isCheck) {
 export function deleteAllSelectedEmployees_action() {
     return {
         type: deleteAllSelectedEmployees_const
+    }
+}
+
+export function deleteEmployee_action(id) {
+    return {
+        type: deleteEmployee_const,
+        payload: id
     }
 }
 

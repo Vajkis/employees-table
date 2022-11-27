@@ -1,4 +1,4 @@
-import { addNewEmployee_const, checkAll_const, checkEmployee_const, deleteAllSelectedEmployees_const, loadData_const, sortEmployeesByAge_const } from "../constants/dataConstants";
+import { addNewEmployee_const, checkAll_const, checkEmployee_const, deleteAllSelectedEmployees_const, deleteEmployee_const, loadData_const, sortEmployeesByAge_const } from "../constants/dataConstants";
 import updateData from "../functions/updateData";
 
 function data_reducer(state, action) {
@@ -29,6 +29,12 @@ function data_reducer(state, action) {
 
         case deleteAllSelectedEmployees_const:
             newState = newState?.map(e => e.check ? { ...e, deleted: true, check: false } : { ...e });
+            updateData(newState);
+            break;
+
+        case deleteEmployee_const:
+            newState = newState?.map(e => ({ ...e, check: false }));
+            newState = newState?.map(e => e.id === action.payload ? { ...e, deleted: true } : { ...e });
             updateData(newState);
             break;
 
