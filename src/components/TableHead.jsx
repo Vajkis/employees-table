@@ -14,22 +14,24 @@ function TableHead() {
     useEffect(() => {
         if (data) {
             const checkData = [...data].filter(e => !e.deleted);
-            if (checkData.length) {                     // fix
-                if (!checkData.some(e => !e.check)) {   // fix
-                    setIsCheck(true);                   // fix
-                }                                       // fix
-            } else {                                    // fix
-                setIsCheck(false);                      // fix
-            }                                           // fix
+            if (checkData.length) {
+                if (!checkData.some(e => !e.check)) {
+                    setIsCheck(true);
+                }
+            } else {
+                setIsCheck(false);
+            }
         }
     }, [data, setIsCheck]);
+
+
 
     return (
         <thead>
             <tr>
                 <th>
                     <label className="checkbox">
-                        <input type='checkbox' onChange={e => { check(e); dispachData(checkAll_action(e.target.checked)) }} checked={isCheck}></input>
+                        <input type='checkbox' onChange={e => { check(e); dispachData(checkAll_action(e.target.checked)) }} checked={isCheck} />
                         <div className="checkmark" />
                     </label>
                 </th>

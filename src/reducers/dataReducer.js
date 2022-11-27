@@ -1,4 +1,5 @@
 import { addNewEmployee_const, checkAll_const, checkEmployee_const, deleteAllSelectedEmployees_const, loadData_const, sortEmployeesByAge_const } from "../constants/dataConstants";
+import updateData from "../functions/updateData";
 
 function data_reducer(state, action) {
     let newState = state ? [...state] : null;
@@ -7,7 +8,7 @@ function data_reducer(state, action) {
         case addNewEmployee_const:
             newState = newState?.map(e => ({ ...e, check: false }));
             newState = [...newState, action.payload];
-            localStorage.setItem('data', JSON.stringify(newState));
+            updateData(newState);
             break;
 
         case sortEmployeesByAge_const:
@@ -28,7 +29,7 @@ function data_reducer(state, action) {
 
         case deleteAllSelectedEmployees_const:
             newState = newState?.map(e => e.check ? { ...e, deleted: true, check: false } : { ...e });
-            localStorage.setItem('data', JSON.stringify(newState)); // fix
+            updateData(newState);
             break;
 
         default:
