@@ -1,4 +1,4 @@
-import { addNewEmployee_const, checkAll_const, checkEmployee_const, deleteAllSelectedEmployees_const, deleteEmployee_const, loadData_const, sortEmployeesByAge_const } from "../constants/dataConstants";
+import { addNewEmployee_const, cancelEdit_const, checkAll_const, checkEmployee_const, deleteAllSelectedEmployees_const, deleteEmployee_const, focusEmployee_const, loadData_const, saveEdit_const, sortEmployeesByAge_const } from "../constants/dataConstants";
 import updateData from "../functions/updateData";
 
 function data_reducer(state, action) {
@@ -6,7 +6,7 @@ function data_reducer(state, action) {
 
     switch (action.type) {
         case addNewEmployee_const:
-            newState = newState?.map(e => ({ ...e, check: false }));
+            newState = newState?.map(e => ({ ...e, check: false, focus: false }));
             newState = [...newState, action.payload];
             updateData(newState);
             break;
@@ -28,14 +28,26 @@ function data_reducer(state, action) {
             break;
 
         case deleteAllSelectedEmployees_const:
-            newState = newState?.map(e => e.check ? { ...e, deleted: true, check: false } : { ...e });
+            newState = newState?.map(e => e.check ? { ...e, deleted: true, check: false, focus: false } : { ...e, focus: false });
             updateData(newState);
             break;
 
         case deleteEmployee_const:
-            newState = newState?.map(e => ({ ...e, check: false }));
+            newState = newState?.map(e => ({ ...e, check: false, focus: false }));
             newState = newState?.map(e => e.id === action.payload ? { ...e, deleted: true } : { ...e });
             updateData(newState);
+            break;
+
+        case focusEmployee_const:
+            newState = newState?.map(e => e.id === action.payload ? { ...e, focus: true } : { ...e, focus: false });
+            break;
+
+        case cancelEdit_const:
+            newState = newState?.map(e => ({ ...e, focus: false }));
+            break;
+
+        case saveEdit_const:
+            newState = newState?.map(e => e.id === action.payload.id ? { ...e, ...action.payload.data, focus: false } : { ...e });
             break;
 
         default:
