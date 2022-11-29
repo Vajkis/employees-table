@@ -12,13 +12,27 @@ body {
     top: 100px;
     left: 50%;
     transform: translateX(-50%);
+
+    @media (max-width: 425px) {
+        top: 10px;
+    }
 }
 
 .new-data {
     display: flex;
+    margin: auto;
     width: 700px;
-    justify-content: space-around;
+    justify-content: space-evenly;
+
+    @media (max-width: 425px) {
+        flex-direction: column;
+        width: 400px;
+
+        gap: 10px;
+    }
 }
+
+@import './scss/variables';
 
 @import './scss/input';
 @import './scss/table';

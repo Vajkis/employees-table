@@ -1,47 +1,90 @@
 table {
+    display: block;
     margin-top: 20px;
-    width: 700px;
+    overflow: hidden;
 
-    border-spacing: 0;
-    border: solid 2px #343049;
+    width: 704px;
+
+    @media (max-width: 425px) {
+        width: 404px;
+    }
+
+    border: solid 2px $primaryColor;
     border-radius: 8px;
 
-    overflow: hidden;
-}
+    thead {
+        background-color: $primaryColor;
+        color: #fff;
+    }
 
-thead {
-    background-color: #343049;
-    color: #fff;
-}
+    thead,
+    tbody {
+        display: block;
+        width: 100%;
+    }
 
-tbody {
-    background-color: #fff;
-    color: #696969;
+    tbody {
+        color: $tableTextColor;
+        background-color: $tableRowColor1;
 
-    tr:nth-child(even) {
-        background-color: #f6f6f6;
+        tr:nth-child(even) {
+            background-color: $tableRowColor2;
+        }
     }
 }
 
-th:first-child,
-td:first-child,
-th:last-child {
-    display: flex;
-}
+tr {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 40px repeat(2, 185px) 120px 170px;
 
-th,
-td {
-    padding: 10px;
-}
-
-th {
-    width: calc(100% / 3);
-
-    &:first-child {
-        width: 20px;
+    @media (max-width: 425px) {
+        grid-template-columns: 30px 85px 40px 105px 130px;
     }
 
-    &:last-child {
-        width: 150px;
+    th:first-child {
+        text-align: start;
+    }
+
+    th {
+        padding: 10px;
+
+        @media (max-width: 425px) {
+            padding: 10px 5px;
+
+            button {
+                height: auto;
+                padding: 3px;
+            }
+        }
+    }
+
+    td {
+        padding: 5px 10px;
+
+        @media (max-width: 425px) {
+            padding: 5px 5px;
+        }
+    }
+
+    td input {
+        margin-bottom: -2px;
+        padding: 0;
+
+        max-width: 100%;
+
+        color: $primaryColor;
+        font-size: 16px;
+    }
+
+    th:last-child,
+    td:last-child {
+        display: flex;
+        justify-content: space-evenly;
+
+        @media (max-width: 425px) {
+            justify-content: space-between;
+        }
     }
 }

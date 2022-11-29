@@ -38,8 +38,8 @@ function TableBody() {
                         <div className="checkmark" />
                     </label>
                 </td>
-                <td><input style={{ color: '#343049', width: '100px' }} type='text' value={name} onChange={event => setName(event.target.value)} /></td>
-                <td><input style={{ color: '#343049', width: '100px' }} type='number' value={age} onChange={event => setAge(event.target.value)} /></td>
+                <td><input type='text' value={name} onChange={event => setName(event.target.value)} /></td>
+                <td><input type='number' value={age} onChange={event => setAge(event.target.value)} /></td>
                 <td>
                     <select value={city} onChange={event => setCity(event.target.value)}>
                         <option value='Vilnius'>Vilnius</option>
