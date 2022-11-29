@@ -31,7 +31,7 @@ function TableHead() {
             <tr>
                 <th>
                     <label className="checkbox">
-                        <input type='checkbox' onChange={e => { check(e); dispachData(checkAll_action(e.target.checked)) }} checked={isCheck} />
+                        <input type='checkbox' onChange={e => { check(e); dispachData(checkAll_action(e.target.checked)) }} checked={isCheck} disabled={![...data].filter(e => !e.deleted).length} />
                         <div className="checkmark" />
                     </label>
                 </th>
