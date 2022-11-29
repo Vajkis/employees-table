@@ -21,7 +21,7 @@ function App() {
       data,
       dispachData,
       isCheck,
-      setIsCheck
+      setIsCheck,
     }}>
       <NewData />
       <Table />

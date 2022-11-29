@@ -75,9 +75,27 @@ function TableBody() {
         );
     }
 
+    let notDeletedData = [];
+
+    if (data) {
+        notDeletedData = [...data].filter(e => !e.deleted);
+    }
+
+    let newData = [[]];
+
+    const currentPageSize = localStorage.getItem('pageSize') || 10;
+
+    while (notDeletedData.length > 0) {
+        if (newData[newData.length - 1].length < currentPageSize) {
+            newData[newData.length - 1].push(notDeletedData.shift());
+        } else {
+            newData = [...newData, [notDeletedData.shift()]];
+        }
+    }
+
     return (
-        <tbody>
-            {data?.map(e => !e.deleted && (e.focus ? focusEmployee(e) : blurEmployee(e)))}
+        <tbody className="tbody">
+            {newData[0].map(e => e.focus ? focusEmployee(e) : blurEmployee(e))}
         </tbody>
     );
 }
