@@ -1,9 +1,10 @@
+import './App.scss';
 import { useEffect, useReducer, useState } from 'react';
 import { loadData_action } from './actions/dataActions';
-import './App.scss';
 import DataContext from './components/DataContext';
 import NewData from './components/NewData';
 import Table from './components/Table';
+import TablePagesList from './components/TablePagesList';
 import data_reducer from './reducers/dataReducer';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
     }}>
       <NewData />
       <Table />
+      <TablePagesList />
     </DataContext.Provider>
   );
 }
