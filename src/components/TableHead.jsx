@@ -24,14 +24,12 @@ function TableHead() {
         }
     }, [data, setIsCheck]);
 
-
-
     return (
         <thead>
             <tr>
                 <th>
                     <label className="checkbox">
-                        <input type='checkbox' onChange={e => { check(e); dispachData(checkAll_action(e.target.checked)) }} checked={isCheck} disabled={![...data].filter(e => !e.deleted).length} />
+                        <input type='checkbox' onChange={e => { check(e); dispachData(checkAll_action(e.target.checked)) }} checked={isCheck} />
                         <div className="checkmark" />
                     </label>
                 </th>
