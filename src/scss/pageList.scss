@@ -1,0 +1,52 @@
+.page-list {
+    position: relative;
+    margin-top: 10px;
+
+    select {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%)
+    }
+
+    nav {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+
+        button {
+            aspect-ratio: 1 / 1;
+            font-size: 21px;
+        }
+
+        ul {
+            display: flex;
+            list-style-type: none;
+            gap: 10px;
+            padding: 0;
+            width: 100px;
+
+            li {
+                text-align: center;
+                color: $primaryColor;
+                font: $font;
+                font-weight: 700;
+                margin: auto;
+                cursor: pointer;
+            }
+
+            .space {
+                cursor: context-menu;
+            }
+
+            .current-page {
+                padding: 3px 8px;
+                height: 100%;
+                border: solid 2px $secondaryColor;
+                border-radius: 15%;
+                cursor: context-menu;
+            }
+        }
+    }
+}
