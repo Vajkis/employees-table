@@ -1,17 +1,32 @@
 .page-list {
     position: relative;
     margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
 
-    select {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%)
+    @media (min-width: 426px) {
+
+        button,
+        select {
+            z-index: 1;
+        }
+    }
+
+    @media (max-width: 425px) {
+        >button {
+            display: none;
+        }
     }
 
     nav {
+        @media (min-width: 426px) {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
         display: flex;
         gap: 10px;
-        width: 100%;
         justify-content: center;
         align-items: center;
 
@@ -25,6 +40,7 @@
             list-style-type: none;
             gap: 10px;
             padding: 0;
+            margin: 0;
 
             li {
                 text-align: center;
