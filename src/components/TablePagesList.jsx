@@ -26,7 +26,7 @@ function TablePagesList() {
             <nav>
                 <button>{'<'}</button>
                 <ul>
-                    <li className='current-page'>100</li>
+                    <li className='current-page'>1</li>
                     <li>2</li>
                     <li className='space'>...</li>
                     <li>4</li>
