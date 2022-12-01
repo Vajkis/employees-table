@@ -1,4 +1,4 @@
-import { addNewEmployee_const, cancelEdit_const, checkAll_const, checkEmployee_const, deleteAllSelectedEmployees_const, deleteEmployee_const, focusEmployee_const, loadData_const, saveEdit_const, sortEmployeesByAge_const } from "../constants/dataConstants";
+import { addNewEmployee_const, cancelEdit_const, checkAll_const, checkEmployee_const, deleteAllSelectedEmployees_const, deleteEmployee_const, focusEmployee_const, loadData_const, saveEdit_const } from "../constants/dataConstants";
 import updateData from "../functions/updateData";
 
 function data_reducer(state, action) {
@@ -9,10 +9,6 @@ function data_reducer(state, action) {
             newState = newState?.map(e => ({ ...e, check: false, focus: false }));
             newState = [...newState, action.payload];
             updateData(newState);
-            break;
-
-        case sortEmployeesByAge_const:
-            newState.sort((a, b) => a.age - b.age);
             break;
 
         case loadData_const:
