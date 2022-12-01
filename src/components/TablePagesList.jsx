@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react";
-import { loadData_action } from "../actions/dataActions";
+import { addNewEmployee_action, loadData_action } from "../actions/dataActions";
+import getRandomEmployee from "../functions/getRandomEmployee";
 import savePageSize from "../functions/savePageSize";
 import DataContext from "./DataContext";
 
 function TablePagesList() {
 
-    const { dispachData } = useContext(DataContext);
+    const { dispachData, pagesList, page, setPage } = useContext(DataContext);
     const [pageSize, setPageSize] = useState('');
 
     useEffect(() => {
@@ -24,6 +25,7 @@ function TablePagesList() {
             </select>
 
             <nav>
+                { }
                 <button>{'<'}</button>
                 <ul>
                     <li className='current-page'>1</li>
@@ -33,6 +35,8 @@ function TablePagesList() {
                 </ul>
                 <button>{'>'}</button>
             </nav>
+
+            <button onClick={() => dispachData(addNewEmployee_action(getRandomEmployee()))}>Test tool</button>
         </div>
     );
 }
