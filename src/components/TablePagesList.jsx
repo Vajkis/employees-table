@@ -27,10 +27,12 @@ function TablePagesList() {
             <nav>
                 <button onClick={() => page > 1 && setPage(p => p - 1)}>{'<'}</button>
                 <ul>
+                    {page > 2 ? <li onClick={() => setPage(1)}>1</li> : null}
                     <li className='current-page'>1</li>
                     <li>2</li>
                     <li className='space'>...</li>
                     <li>4</li>
+                    {page < pagesList.length - 1 ? <li onClick={() => setPage(pagesList.length)}>{pagesList.length}</li> : null}
                 </ul>
                 <button onClick={() => page < pagesList.length && setPage(p => p + 1)}>{'>'}</button>
             </nav>
