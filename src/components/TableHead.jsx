@@ -24,9 +24,10 @@ function TableHead() {
             setDisabled(false);
         } else {
             setIsCheck(false);
+            page > 1 && setPage(p => p - 1);
             setDisabled(true);
         }
-    }, [pagesList, page, setIsCheck, setDisabled]);
+    }, [pagesList, page, setIsCheck, setPage, setDisabled]);
 
     return (
         <thead>
