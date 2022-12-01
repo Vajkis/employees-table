@@ -4,7 +4,7 @@ import DataContext from "./DataContext";
 
 function TableBody() {
 
-    const { data, dispachData, setIsCheck } = useContext(DataContext);
+    const { data, dispachData, setIsCheck, pagesList } = useContext(DataContext);
 
     const check = (id, e) => {
         const c = e.target.checked;
@@ -81,21 +81,19 @@ function TableBody() {
         notDeletedData = [...data].filter(e => !e.deleted);
     }
 
-    let newData = [[]];
-
     const currentPageSize = localStorage.getItem('pageSize') || 10;
 
     while (notDeletedData.length > 0) {
-        if (newData[newData.length - 1].length < currentPageSize) {
-            newData[newData.length - 1].push(notDeletedData.shift());
+        if (pagesList[pagesList.length - 1].length < currentPageSize) {
+            pagesList[pagesList.length - 1].push(notDeletedData.shift());
         } else {
-            newData = [...newData, [notDeletedData.shift()]];
+            pagesList.push([notDeletedData.shift()]);
         }
     }
 
     return (
         <tbody className="tbody">
-            {newData[0].map(e => e.focus ? focusEmployee(e) : blurEmployee(e))}
+            {pagesList[0].map(e => e.focus ? focusEmployee(e) : blurEmployee(e))}
         </tbody>
     );
 }

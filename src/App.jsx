@@ -11,6 +11,8 @@ function App() {
 
   const [data, dispachData] = useReducer(data_reducer, null);
   const [isCheck, setIsCheck] = useState(false);
+  const pagesList = [[]];
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     dispachData(loadData_action());
@@ -22,6 +24,9 @@ function App() {
       dispachData,
       isCheck,
       setIsCheck,
+      pagesList,
+      page,
+      setPage
     }}>
       <NewData />
       <Table />
