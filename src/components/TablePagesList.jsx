@@ -37,11 +37,11 @@ function TablePagesList() {
 
                     {page === 2 && <li onClick={() => setPage(1)}>1</li>}
                     {page === 3 && <><li onClick={() => setPage(1)}>1</li><li onClick={() => setPage(2)}>2</li></>}
-                    {page > 3 && <><li>...</li><li onClick={() => setPage(p => p - 1)}>{page - 1}</li></>}
+                    {page > 3 && <><li className='space'>...</li><li onClick={() => setPage(p => p - 1)}>{page - 1}</li></>}
 
                     <li className='current-page'>{page}</li>
 
-                    {page < pagesList.length - 2 && <><li onClick={() => setPage(p => p + 1)}>{page + 1}</li><li>...</li></>}
+                    {page < pagesList.length - 2 && <><li onClick={() => setPage(p => p + 1)}>{page + 1}</li><li className='space'>...</li></>}
                     {page === pagesList.length - 2 && <><li onClick={() => setPage(p => p + 1)}>{page + 1}</li><li onClick={() => setPage(p => p + 2)}>{page + 2}</li></>}
                     {page === pagesList.length - 1 && <li onClick={() => setPage(p => p + 1)}>{page + 1}</li>}
 
