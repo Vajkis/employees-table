@@ -28,7 +28,7 @@ function TablePagesList() {
                 <button onClick={() => page > 1 && setPage(p => p - 1)}>{'<'}</button>
                 <ul>
                     {/* 
-                         1       page > 3
+                        1       page > 3
                         
                         1       page === 2
                         1 2     page === 3
@@ -50,7 +50,7 @@ function TablePagesList() {
                     {page < pagesList.length - 2 ? <li onClick={() => setPage(pagesList.length)}>{pagesList.length}</li> : null}
 
                     {/* 
-                       8 ...   page < pagesList.length - 2
+                        8 ...   page < pagesList.length - 2
                         9 10    page === pagesList.length -2
                         10      page === pagesList.length -1
 
