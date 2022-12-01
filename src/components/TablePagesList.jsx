@@ -30,9 +30,11 @@ function TablePagesList() {
                     {page > 3 ? <li onClick={() => setPage(1)}>1</li> : null}
 
                     {/* 
+                        1       page > 3
+
                         1       page === 2
                         1 2     page === 3
-                        1 ...   page > 3
+                        ... 3   page > 3
                     */}
 
                     {page === 2 && <li onClick={() => setPage(1)}>1</li>}
@@ -49,6 +51,8 @@ function TablePagesList() {
                         8 ...   page < pagesList.length - 2
                         9 10    page === pagesList.length -2
                         10      page === pagesList.length -1
+
+                        10      page < pagesList.length - 2
                     */}
 
                     {page < pagesList.length - 2 ? <li onClick={() => setPage(pagesList.length)}>{pagesList.length}</li> : null}
