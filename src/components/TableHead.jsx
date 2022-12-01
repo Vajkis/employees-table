@@ -1,35 +1,39 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { checkAll_action, deleteAllSelectedEmployees_action } from "../actions/dataActions";
 import DataContext from "./DataContext";
 
 function TableHead() {
 
-    const { dispachData, isCheck, setIsCheck, pagesList, page } = useContext(DataContext);
+    const { dispachData, isCheck, setIsCheck, pagesList, page, setPage } = useContext(DataContext);
 
     const check = e => {
         setIsCheck(e.target.checked);
     }
 
-    const currentPage = pagesList[page - 1];
+    const [disabled, setDisabled] = useState(false);
 
     useEffect(() => {
+        const currentPage = pagesList[page - 1];
+
         if (currentPage?.length) {
             if (!currentPage.some(e => !e.check)) {
                 setIsCheck(true);
             } else {
                 setIsCheck(false);
             }
+            setDisabled(false);
         } else {
             setIsCheck(false);
+            setDisabled(true);
         }
-    }, [currentPage, setIsCheck])
+    }, [pagesList, page, setIsCheck, setDisabled]);
 
     return (
         <thead>
             <tr>
                 <th>
                     <label className="checkbox">
-                        <input type='checkbox' onChange={e => { check(e); dispachData(checkAll_action(pagesList[page - 1].map(e => e.id), e.target.checked)) }} checked={isCheck} />
+                        <input type='checkbox' onChange={e => { check(e); dispachData(checkAll_action(pagesList[page - 1].map(e => e.id), e.target.checked)); }} checked={isCheck} disabled={disabled} />
                         <div className="checkmark" />
                     </label>
                 </th>
