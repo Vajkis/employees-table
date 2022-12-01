@@ -27,12 +27,31 @@ function TablePagesList() {
             <nav>
                 <button onClick={() => page > 1 && setPage(p => p - 1)}>{'<'}</button>
                 <ul>
-                    {page > 2 ? <li onClick={() => setPage(1)}>1</li> : null}
-                    <li className='current-page'>1</li>
-                    <li>2</li>
-                    <li className='space'>...</li>
-                    <li>4</li>
-                    {page < pagesList.length - 1 ? <li onClick={() => setPage(pagesList.length)}>{pagesList.length}</li> : null}
+                    {page > 3 ? <li onClick={() => setPage(1)}>1</li> : null}
+
+                    {/* 
+                        1       page === 2
+                        1 2     page === 3
+                        1 ...   page > 3
+                    */}
+
+                    {page === 2 && <li onClick={() => setPage(1)}>1</li>}
+                    {page === 3 && <><li onClick={() => setPage(1)}>1</li><li onClick={() => setPage(2)}>2</li></>}
+                    {page > 3 && <><li>...</li><li onClick={() => setPage(p => p - 1)}>{page - 1}</li></>}
+
+                    <li className='current-page'>{page}</li>
+
+                    {page < pagesList.length - 2 && <><li onClick={() => setPage(p => p + 1)}>{page + 1}</li><li>...</li></>}
+                    {page === pagesList.length - 2 && <><li onClick={() => setPage(p => p + 1)}>{page + 1}</li><li onClick={() => setPage(p => p + 2)}>{page + 2}</li></>}
+                    {page === pagesList.length - 1 && <li onClick={() => setPage(p => p + 1)}>{page + 1}</li>}
+
+                    {/* 
+                        8 ...   page < pagesList.length - 2
+                        9 10    page === pagesList.length -2
+                        10      page === pagesList.length -1
+                    */}
+
+                    {page < pagesList.length - 2 ? <li onClick={() => setPage(pagesList.length)}>{pagesList.length}</li> : null}
                 </ul>
                 <button onClick={() => page < pagesList.length && setPage(p => p + 1)}>{'>'}</button>
             </nav>
