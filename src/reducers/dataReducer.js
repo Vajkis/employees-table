@@ -16,7 +16,11 @@ function data_reducer(state, action) {
             break;
 
         case checkAll_const:
-            newState = newState?.map(e => action.payload.idList.includes(e.id) ? { ...e, check: action.payload.isCheck } : { ...e });
+            if (action.payload.idList.length) {
+                newState = newState?.map(e => action.payload.idList.includes(e.id) ? { ...e, check: action.payload.isCheck } : { ...e });
+            } else {
+                newState = newState?.map(e => ({ ...e, check: false }));
+            }
             break;
 
         case checkEmployee_const:

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { addNewEmployee_action, loadData_action } from "../actions/dataActions";
+import { addNewEmployee_action, checkAll_action, loadData_action } from "../actions/dataActions";
 import getRandomEmployee from "../functions/getRandomEmployee";
 import savePageSize from "../functions/savePageSize";
 import DataContext from "./DataContext";
@@ -13,6 +13,10 @@ function TablePagesList() {
         savePageSize(pageSize);
         dispachData(loadData_action());
     }, [pageSize, dispachData]);
+
+    useEffect(() => {
+        dispachData(checkAll_action([], false));
+    }, [page, dispachData]);
 
     return (
         <div className='page-list'>
