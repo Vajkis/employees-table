@@ -93,7 +93,7 @@ function TableBody() {
 
     return (
         <tbody className="tbody">
-            {pagesList[page - 1].map(e => e.focus ? focusEmployee(e) : blurEmployee(e))}
+            {pagesList[page - 1]?.map(e => e.focus ? focusEmployee(e) : blurEmployee(e))}
         </tbody>
     );
 }
