@@ -27,13 +27,15 @@ function TablePagesList() {
             <nav>
                 <button onClick={() => page > 1 && setPage(p => p - 1)}>{'<'}</button>
                 <ul>
-                    {page > 3 ? <li onClick={() => setPage(1)}>1</li> : null}
-
                     {/* 
+                        1       page > 3
+                        
                         1       page === 2
                         1 2     page === 3
-                        1 ...   page > 3
+                        ... 3   page > 3
                     */}
+
+                    {page > 3 ? <li onClick={() => setPage(1)}>1</li> : null}
 
                     {page === 2 && <li onClick={() => setPage(1)}>1</li>}
                     {page === 3 && <><li onClick={() => setPage(1)}>1</li><li onClick={() => setPage(2)}>2</li></>}
@@ -45,13 +47,15 @@ function TablePagesList() {
                     {page === pagesList.length - 2 && <><li onClick={() => setPage(p => p + 1)}>{page + 1}</li><li onClick={() => setPage(p => p + 2)}>{page + 2}</li></>}
                     {page === pagesList.length - 1 && <li onClick={() => setPage(p => p + 1)}>{page + 1}</li>}
 
+                    {page < pagesList.length - 2 ? <li onClick={() => setPage(pagesList.length)}>{pagesList.length}</li> : null}
+
                     {/* 
                         8 ...   page < pagesList.length - 2
                         9 10    page === pagesList.length -2
                         10      page === pagesList.length -1
-                    */}
 
-                    {page < pagesList.length - 2 ? <li onClick={() => setPage(pagesList.length)}>{pagesList.length}</li> : null}
+                        10      page < pagesList.length - 2
+                    */}
                 </ul>
                 <button onClick={() => page < pagesList.length && setPage(p => p + 1)}>{'>'}</button>
             </nav>
