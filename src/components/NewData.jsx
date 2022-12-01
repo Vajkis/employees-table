@@ -41,7 +41,7 @@ function NewData() {
                 <option value=''>Choose city</option>
                 <option value='Vilnius'>Vilnius</option>
                 <option value='Kaunas'>Kaunas</option>
-                <option value='Klaipeda'>Klaipeda</option>
+                <option value='Klaipėda'>Klaipėda</option>
             </select>
             <button onClick={addNewEmployee}>Add employee</button>
         </div>
