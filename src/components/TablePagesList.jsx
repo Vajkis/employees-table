@@ -25,15 +25,14 @@ function TablePagesList() {
             </select>
 
             <nav>
-                { }
-                <button>{'<'}</button>
+                <button onClick={() => page > 1 && setPage(p => p - 1)}>{'<'}</button>
                 <ul>
                     <li className='current-page'>1</li>
                     <li>2</li>
                     <li className='space'>...</li>
                     <li>4</li>
                 </ul>
-                <button>{'>'}</button>
+                <button onClick={() => page < pagesList.length && setPage(p => p + 1)}>{'>'}</button>
             </nav>
 
             <button onClick={() => dispachData(addNewEmployee_action(getRandomEmployee()))}>Test tool</button>

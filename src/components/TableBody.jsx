@@ -4,7 +4,7 @@ import DataContext from "./DataContext";
 
 function TableBody() {
 
-    const { data, dispachData, setIsCheck, pagesList } = useContext(DataContext);
+    const { data, dispachData, setIsCheck, pagesList, page } = useContext(DataContext);
 
     const check = (id, e) => {
         const c = e.target.checked;
@@ -93,7 +93,7 @@ function TableBody() {
 
     return (
         <tbody className="tbody">
-            {pagesList[0].map(e => e.focus ? focusEmployee(e) : blurEmployee(e))}
+            {pagesList[page - 1].map(e => e.focus ? focusEmployee(e) : blurEmployee(e))}
         </tbody>
     );
 }

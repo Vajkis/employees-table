@@ -13,7 +13,7 @@ function TableHead() {
     const currentPage = pagesList[page - 1];
 
     useEffect(() => {
-        if (currentPage.length) {
+        if (currentPage?.length) {
             if (!currentPage.some(e => !e.check)) {
                 setIsCheck(true);
             } else {
