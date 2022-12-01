@@ -16,7 +16,7 @@ function data_reducer(state, action) {
             break;
 
         case checkAll_const:
-            newState = newState?.map(e => ({ ...e, check: action.payload }));
+            newState = newState?.map(e => action.payload.idList.includes(e.id) ? { ...e, check: action.payload.isCheck } : { ...e });
             break;
 
         case checkEmployee_const:

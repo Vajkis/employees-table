@@ -13,10 +13,10 @@ export function loadData_action() {
     }
 }
 
-export function checkAll_action(isCheck) {
+export function checkAll_action(idList, isCheck) {
     return {
         type: checkAll_const,
-        payload: isCheck
+        payload: { idList, isCheck }
     }
 }
 

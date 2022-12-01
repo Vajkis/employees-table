@@ -4,32 +4,32 @@ import DataContext from "./DataContext";
 
 function TableHead() {
 
-    const { dispachData, data, isCheck, setIsCheck } = useContext(DataContext);
+    const { dispachData, isCheck, setIsCheck, pagesList, page } = useContext(DataContext);
 
     const check = e => {
-        const c = e.target.checked;
-        setIsCheck(c);
+        setIsCheck(e.target.checked);
     }
 
+    const currentPage = pagesList[page - 1];
+
     useEffect(() => {
-        if (data) {
-            const checkData = [...data].filter(e => !e.deleted);
-            if (checkData.length) {
-                if (!checkData.some(e => !e.check)) {
-                    setIsCheck(true);
-                }
+        if (currentPage.length) {
+            if (!currentPage.some(e => !e.check)) {
+                setIsCheck(true);
             } else {
                 setIsCheck(false);
             }
+        } else {
+            setIsCheck(false);
         }
-    }, [data, setIsCheck]);
+    }, [currentPage, setIsCheck])
 
     return (
         <thead>
             <tr>
                 <th>
                     <label className="checkbox">
-                        <input type='checkbox' onChange={e => { check(e); dispachData(checkAll_action(e.target.checked)) }} checked={isCheck} />
+                        <input type='checkbox' onChange={e => { check(e); dispachData(checkAll_action(pagesList[page - 1].map(e => e.id), e.target.checked)) }} checked={isCheck} />
                         <div className="checkmark" />
                     </label>
                 </th>
