@@ -6,7 +6,7 @@ function pagesList_reducer(state, action) {
     switch (action.type) {
         case createPages_const:
             newState = [[]];
-            const pageSize = localStorage.getItem('pageSize');
+            const pageSize = localStorage.getItem('pageSize') || 10;
 
             for (const employee of action.payload) {
                 if (!employee.deleted) {
