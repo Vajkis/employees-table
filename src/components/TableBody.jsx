@@ -1,10 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { cancelEdit_action, checkEmployee_action, deleteEmployee_action, focusEmployee_action, saveEdit_action } from "../actions/dataActions";
+import { createPages_action } from "../constants/pagesListConstants";
 import DataContext from "./DataContext";
 
 function TableBody() {
 
-    const { data, dispachData, setIsCheck, pagesList, page } = useContext(DataContext);
+    const { data, dispachData, setIsCheck, pagesList, dispachPagesList, page } = useContext(DataContext);
+
+    useEffect(() => {
+        dispachPagesList(createPages_action(data));
+    }, [data, dispachPagesList]);
 
     const check = (id, e) => {
         const c = e.target.checked;
@@ -29,7 +34,7 @@ function TableBody() {
         }
     }, [data]);
 
-    function focusEmployee(e) {
+    const focusEmployee = e => {
         return (
             <tr key={e.id}>
                 <td>
@@ -55,7 +60,7 @@ function TableBody() {
         );
     }
 
-    function blurEmployee(e) {
+    const blurEmployee = e => {
         return (
             <tr key={e.id}>
                 <td>
@@ -73,22 +78,6 @@ function TableBody() {
                 </td>
             </tr>
         );
-    }
-
-    let notDeletedData = [];
-
-    if (data) {
-        notDeletedData = [...data].filter(e => !e.deleted);
-    }
-
-    const currentPageSize = localStorage.getItem('pageSize') || 10;
-
-    while (notDeletedData.length > 0) {
-        if (pagesList[pagesList.length - 1].length < currentPageSize) {
-            pagesList[pagesList.length - 1].push(notDeletedData.shift());
-        } else {
-            pagesList.push([notDeletedData.shift()]);
-        }
     }
 
     return (
