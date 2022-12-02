@@ -8,12 +8,14 @@ function pagesList_reducer(state, action) {
             newState = [[]];
             const pageSize = localStorage.getItem('pageSize') || 10;
 
-            for (const employee of action.payload) {
-                if (!employee.deleted) {
-                    if (newState[newState.length - 1].length < pageSize) {
-                        newState[newState.length - 1] = [...newState[newState.length - 1], employee];
-                    } else {
-                        newState = [...newState, [employee]];
+            if (action.payload) {
+                for (const employee of action.payload) {
+                    if (!employee.deleted) {
+                        if (newState[newState.length - 1].length < pageSize) {
+                            newState[newState.length - 1] = [...newState[newState.length - 1], employee];
+                        } else {
+                            newState = [...newState, [employee]];
+                        }
                     }
                 }
             }
