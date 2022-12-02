@@ -48,6 +48,7 @@ function data_reducer(state, action) {
 
         case saveEdit_const:
             newState = newState?.map(e => e.id === action.payload.id ? { ...e, ...action.payload.data, focus: false } : { ...e });
+            updateData(newState);
             break;
 
         default:
