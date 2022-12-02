@@ -5,14 +5,14 @@ function data_reducer(state, action) {
     let newState = state ? [...state] : null;
 
     switch (action.type) {
+        case loadData_const:
+            newState = JSON.parse(localStorage.getItem('data')) || [];
+            break;
+
         case addNewEmployee_const:
             newState = newState?.map(e => ({ ...e, check: false, focus: false }));
             newState = [...newState, action.payload];
             updateData(newState);
-            break;
-
-        case loadData_const:
-            newState = JSON.parse(localStorage.getItem('data')) || [];
             break;
 
         case checkAll_const:
