@@ -1,15 +1,2 @@
-import { createPages_const } from "../actions/pagesListActions";
-
-export function createPages_action(data) {
-    return {
-        type: createPages_const,
-        payload: data
-
-    }
-}
-
-// export function (){
-//     return {
-//         type:
-//     }
-// }
+export const createPages_const = 'createPages_const';
+export const checkAll_const = 'checkAll_const';

@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { cancelEdit_action, checkEmployee_action, deleteEmployee_action, focusEmployee_action, saveEdit_action } from "../actions/dataActions";
-import { createPages_action } from "../constants/pagesListConstants";
+import { createPages_action } from "../actions/pagesListActions";
 import DataContext from "./DataContext";
 
 function TableBody() {

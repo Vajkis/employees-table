@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { addNewEmployee_action, checkAll_action, loadData_action } from "../actions/dataActions";
+import { addNewEmployee_action, loadData_action } from "../actions/dataActions";
+import { checkAll_action } from "../actions/pagesListActions";
 import getRandomEmployee from "../functions/getRandomEmployee";
 import savePageSize from "../functions/savePageSize";
 import DataContext from "./DataContext";
