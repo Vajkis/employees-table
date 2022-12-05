@@ -31,6 +31,10 @@ body {
     }
 }
 
+.hide {
+    display: none;
+}
+
 @import './scss/variables';
 
 @import './scss/background';
@@ -40,3 +44,4 @@ body {
 @import './scss/select';
 @import './scss/checkbox';
 @import './scss/pagesList';
+@import './scss/notification';
