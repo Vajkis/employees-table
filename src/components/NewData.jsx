@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useContext, useRef } from "react";
 import { addNewEmployee_action } from "../actions/dataActions";
 import getId from "../functions/getId";
@@ -6,6 +7,8 @@ import DataContext from "./DataContext";
 function NewData() {
 
     const { dispachData } = useContext(DataContext);
+
+    const [show, setShow] = useState(false);
 
     const nameRef = useRef();
     const ageRef = useRef();
@@ -17,6 +20,8 @@ function NewData() {
         let city = selectRef.current.value;
 
         if (name.trim() && age && city) {
+            setShow(false);
+
             dispachData(addNewEmployee_action({
                 id: getId(),
                 name: (name[0].toUpperCase() + name.slice(1).toLowerCase()).trim(),
@@ -30,12 +35,15 @@ function NewData() {
             nameRef.current.value = '';
             ageRef.current.value = '';
             selectRef.current.value = '';
+        } else {
+            setShow(true);
         }
     }
 
+
     return (
         <>
-            <div className="notification"></div>
+            <div className={'notification ' + show ? 'show' : null} ></div>
 
             <div className='new-data'>
 
