@@ -16,10 +16,10 @@ function NewData() {
         let age = ageRef.current.value;
         let city = selectRef.current.value;
 
-        if (name && age && city) {
+        if (name.trim() && age && city) {
             dispachData(addNewEmployee_action({
                 id: getId(),
-                name: name[0].toUpperCase() + name.slice(1).toLowerCase(),
+                name: (name[0].toUpperCase() + name.slice(1).toLowerCase()).trim(),
                 age,
                 city,
                 deleted: false,
@@ -34,17 +34,22 @@ function NewData() {
     }
 
     return (
-        <div className='new-data'>
-            <input ref={nameRef} type='text' placeholder='Name' onKeyUp={e => e.key === 'Enter' && addNewEmployee()} />
-            <input ref={ageRef} type='number' placeholder='Age' onKeyUp={e => e.key === 'Enter' && addNewEmployee()} />
-            <select ref={selectRef}>
-                <option value=''>Choose city</option>
-                <option value='Vilnius'>Vilnius</option>
-                <option value='Kaunas'>Kaunas</option>
-                <option value='Klaipėda'>Klaipėda</option>
-            </select>
-            <button onClick={addNewEmployee}>Add employee</button>
-        </div>
+        <>
+            <div className="notification"></div>
+
+            <div className='new-data'>
+
+                <input ref={nameRef} type='text' placeholder='Name' onKeyUp={e => e.key === 'Enter' && addNewEmployee()} />
+                <input ref={ageRef} type='number' placeholder='Age' onKeyUp={e => e.key === 'Enter' && addNewEmployee()} />
+                <select ref={selectRef}>
+                    <option value=''>Choose city</option>
+                    <option value='Vilnius'>Vilnius</option>
+                    <option value='Kaunas'>Kaunas</option>
+                    <option value='Klaipėda'>Klaipėda</option>
+                </select>
+                <button onClick={addNewEmployee}>Add employee</button>
+            </div>
+        </>
     );
 }
 
