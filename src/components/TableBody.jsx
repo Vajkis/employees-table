@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { cancelEdit_action, checkEmployee_action, deleteEmployee_action, focusEmployee_action, saveEdit_action } from "../actions/dataActions";
-import { createPages_action } from "../actions/pagesListActions";
+import { deleteEmployee_action, saveEdit_action } from "../actions/dataActions";
+import { cancelEdit_action, checkEmployee_action, createPages_action, focusEmployee_action } from "../actions/pagesListActions";
 import DataContext from "./DataContext";
 
 function TableBody() {
@@ -13,7 +13,7 @@ function TableBody() {
 
     const check = (id, e) => {
         const c = e.target.checked;
-        dispachData(checkEmployee_action(id, c));
+        dispachPagesList(checkEmployee_action(id, page, c));
 
         if (!c) {
             setIsCheck(c);
@@ -25,14 +25,14 @@ function TableBody() {
     const [city, setCity] = useState('');
 
     useEffect(() => {
-        if (data?.some(e => e.focus)) {
-            const focusedEmployee = [...data].filter(e => e.focus)[0];
+        if (pagesList[page - 1]?.some(e => e.focus)) {
+            const focusedEmployee = [...pagesList[page - 1]].filter(e => e.focus)[0];
 
             setName(focusedEmployee.name);
             setAge(focusedEmployee.age);
             setCity(focusedEmployee.city);
         }
-    }, [data]);
+    }, [page, pagesList]);
 
     const focusEmployee = e => {
         return (
@@ -53,7 +53,7 @@ function TableBody() {
                     </select>
                 </td>
                 <td>
-                    <button onClick={() => dispachData(cancelEdit_action())}>Cancel</button>
+                    <button onClick={() => dispachPagesList(cancelEdit_action(page))}>Cancel</button>
                     <button onClick={() => dispachData(saveEdit_action(e.id, { name, age, city }))}>Save</button>
                 </td>
             </tr>
@@ -73,7 +73,7 @@ function TableBody() {
                 <td>{e.age}</td>
                 <td>{e.city}</td>
                 <td>
-                    <button onClick={() => dispachData(focusEmployee_action(e.id))}>Edit</button>
+                    <button onClick={() => dispachPagesList(focusEmployee_action(e.id, page))}>Edit</button>
                     <button onClick={() => dispachData(deleteEmployee_action(e.id))}>Delete</button>
                 </td>
             </tr>
