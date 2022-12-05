@@ -12,7 +12,7 @@ function getRandomEmployee() {
         deleted: false,
         focus: false,
         check: false
-    }
+    };
 }
 
 export default getRandomEmployee;

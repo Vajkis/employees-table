@@ -7,7 +7,7 @@ import DataContext from "./DataContext";
 
 function TablePagesList() {
 
-    const { dispachData, /*pagesList,*/  pagesList, page, setPage } = useContext(DataContext);
+    const { dispachData, pagesList, page, setPage } = useContext(DataContext);
     const [pageSize, setPageSize] = useState('');
 
     useEffect(() => {
