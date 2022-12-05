@@ -32,9 +32,3 @@ export function saveEdit_action(id, data) {
         payload: { id, data }
     }
 }
-
-// export function (){
-//     return {
-//         type:
-//     }
-// }
