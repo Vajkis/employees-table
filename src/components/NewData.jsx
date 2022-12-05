@@ -43,7 +43,7 @@ function NewData() {
 
     return (
         <>
-            <div className={show ? 'notification' : 'notification hide'}>All inputs must be filled!</div>
+            <div className={show ? 'notification' : 'notification hide'}>All inputs must be not empty!</div>
 
             <div className='new-data'>
 
