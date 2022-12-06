@@ -15,7 +15,7 @@ function data_reducer(state, action) {
             break;
 
         case deleteAllSelectedEmployees_const:
-            newState = newState?.map(e => e.check ? { ...e, deleted: true, check: false, focus: false } : { ...e, focus: false });
+            newState = newState?.map(e => action.payload?.includes(e.id) ? { ...e, deleted: true, check: false, focus: false } : { ...e, focus: false });
             break;
 
         case deleteEmployee_const:

@@ -11,6 +11,16 @@ function TableHead() {
         setIsCheck(e.target.checked);
     }
 
+    const deleteAllSelected = () => {
+        let idList = [];
+
+        for (const employee of pagesList[page - 1]) {
+            employee.check && (idList = [...idList, employee.id]);
+        }
+
+        idList.length && dispachData(deleteAllSelectedEmployees_action(idList));
+    }
+
     const [disabled, setDisabled] = useState(false);
 
     useEffect(() => {
@@ -42,7 +52,7 @@ function TableHead() {
                 <th>Name</th>
                 <th>Age</th>
                 <th>City</th>
-                <th><button onClick={() => dispachData(deleteAllSelectedEmployees_action())}>Delete all selected</button></th>
+                <th><button onClick={deleteAllSelected}>Delete all selected</button></th>
             </tr>
         </thead>
     );

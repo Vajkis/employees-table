@@ -13,9 +13,10 @@ export function addNewEmployee_action(newData) {
     }
 }
 
-export function deleteAllSelectedEmployees_action() {
+export function deleteAllSelectedEmployees_action(idList) {
     return {
-        type: deleteAllSelectedEmployees_const
+        type: deleteAllSelectedEmployees_const,
+        payload: idList
     }
 }
 
