@@ -50,7 +50,7 @@ function TableHead() {
             dispachData(sortEmployees_action(''));
             setSortOrder(['', 0]);
 
-        } else if (!lastOrder) {
+        } else if (!lastOrder || lastOrder === -1) {
             dispachData(sortEmployees_action(sortBy, 1));
             setSortOrder([sortBy, 1]);
 
@@ -71,7 +71,7 @@ function TableHead() {
                 </th>
                 <th onClick={() => sort('Name')}>Name {sortOrder[0] === 'Name' && <Chevron direction={sortOrder[1] > 0 ? 'Down' : 'Up'} />}</th>
                 <th onClick={() => sort('Age')}>Age {sortOrder[0] === 'Age' && <Chevron direction={sortOrder[1] > 0 ? 'Down' : 'Up'} />}</th>
-                <th onClick={() => sort('City')}>City {sortOrder[0] === 'City' && <Chevron direction={sortOrder[1] > 0 ? 'Up' : 'Down'} />}</th>
+                <th onClick={() => sort('City')}>City {sortOrder[0] === 'City' && <Chevron direction={sortOrder[1] > 0 ? 'Down' : 'Up'} />}</th>
                 <th><button onClick={deleteAllSelected}>Delete all selected</button></th>
             </tr>
         </thead>

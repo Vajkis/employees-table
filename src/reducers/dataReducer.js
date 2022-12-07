@@ -49,8 +49,8 @@ function data_reducer(state, action) {
                     break;
 
                 case 'City':
-                    newState = [...newState]?.sort((a, b) => b.name.localeCompare(a.name) * action.payload.order);
-                    newState = [...newState]?.sort((a, b) => b.city.localeCompare(a.city) * action.payload.order);
+                    newState = [...newState]?.sort((a, b) => b.name.localeCompare(a.name) * action.payload.order * -1);
+                    newState = [...newState]?.sort((a, b) => b.city.localeCompare(a.city) * action.payload.order * -1);
                     break;
 
                 default:
