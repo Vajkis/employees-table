@@ -130,6 +130,7 @@ tr th:first-child {
 }
 
 tr th {
+    cursor: pointer;
     padding: 10px
 }
 
@@ -232,7 +233,7 @@ select {
 
 .checkbox input:checked+.checkmark {
     background-color: #343049;
-    background-image: url(../media/checkMarkWhite.6d62acfe4c7b663dfc44.svg);
+    background-image: url(../media/checkMark.6d62acfe4c7b663dfc44.svg);
     border-color: #fff
 }
 
@@ -384,4 +385,4 @@ select {
     }
 }
 
-/*# sourceMappingURL=main.bbdefb67.css.map*/
+/*# sourceMappingURL=main.4efbf18b.css.map*/
