@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { checkAll_action } from "../actions/pagesListActions"
 import { deleteAllSelectedEmployees_action, sortEmployees_action } from "../actions/dataActions";
 import DataContext from "./DataContext";
+import Chevron from "./Chevron";
 
 function TableHead() {
 
@@ -68,9 +69,9 @@ function TableHead() {
                         <div className="checkmark" />
                     </label>
                 </th>
-                <th onClick={() => sort('Name')}>Name</th>
-                <th onClick={() => sort('Age')}>Age</th>
-                <th onClick={() => sort('City')}>City</th>
+                <th onClick={() => sort('Name')}>Name {sortOrder[0] === 'Name' && <Chevron style={{ width: '24px' }} direction={sortOrder[1] > 0 ? 'Down' : 'Up'} />}</th>
+                <th onClick={() => sort('Age')}>Age {sortOrder[0] === 'Age' && <Chevron style={{ width: '24px' }} direction={sortOrder[1] > 0 ? 'Down' : 'Up'} />}</th>
+                <th onClick={() => sort('City')}>City {sortOrder[0] === 'City' && <Chevron style={{ width: '24px' }} direction={sortOrder[1] > 0 ? 'Down' : 'Up'} />}</th>
                 <th><button onClick={deleteAllSelected}>Delete all selected</button></th>
             </tr>
         </thead>

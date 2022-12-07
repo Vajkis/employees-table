@@ -49,6 +49,7 @@ tr {
 
     th {
         padding: 10px;
+        cursor: pointer;
 
         @media (max-width: 425px) {
             padding: 10px 5px;
@@ -56,6 +57,12 @@ tr {
             button {
                 height: auto;
                 padding: 3px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            &:hover {
+                text-decoration-line: underline;
             }
         }
     }
