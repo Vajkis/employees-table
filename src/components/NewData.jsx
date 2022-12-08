@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useContext, useRef } from "react";
-import { addNewEmployee_action } from "../actions/dataActions";
+import { addNewEmployee_action, sortEmployees_action } from "../actions/dataActions";
 import getId from "../functions/getId";
 import DataContext from "./DataContext";
 
 function NewData() {
 
-    const { dispachData } = useContext(DataContext);
+    const { dispachData, sortOrder } = useContext(DataContext);
 
     const [show, setShow] = useState(false);
 
@@ -31,6 +31,9 @@ function NewData() {
                 focus: false,
                 check: false
             }));
+
+            const [lastSort, lastOrder] = sortOrder;
+            dispachData(sortEmployees_action(lastSort, lastOrder));
 
             nameRef.current.value = '';
             ageRef.current.value = '';

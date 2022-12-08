@@ -54,7 +54,7 @@ function data_reducer(state, action) {
                     break;
 
                 default:
-                    newState = [...newState]?.sort((a, b) => a.id - b.id);
+                    newState && (newState = [...newState]?.sort((a, b) => a.id - b.id));
                     break;
             }
             break;

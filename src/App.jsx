@@ -14,6 +14,7 @@ function App() {
   const [pagesList, dispachPagesList] = useReducer(pagesList_reducer, [[]]);
   const [page, setPage] = useState(1);
   const [isCheck, setIsCheck] = useState(false);
+  const [sortOrder, setSortOrder] = useState(['', 0]);
 
   useEffect(() => {
     dispachData(loadData_action());
@@ -28,7 +29,9 @@ function App() {
       pagesList,
       dispachPagesList,
       page,
-      setPage
+      setPage,
+      sortOrder,
+      setSortOrder
     }}>
       <NewData />
       <Table />

@@ -1,13 +1,19 @@
 import { useContext, useState } from "react";
-import { addNewEmployee_action, } from "../actions/dataActions";
+import { addNewEmployee_action, sortEmployees_action, } from "../actions/dataActions";
 import getRandomEmployee from "../functions/getRandomEmployee";
 import DataContext from "./DataContext";
 
 function TablePagesList() {
 
-    const { dispachData, pagesList, page, setPage } = useContext(DataContext);
+    const { dispachData, pagesList, page, setPage, sortOrder } = useContext(DataContext);
     const [pageSize, setPageSize] = useState('');
 
+    const testTool = () => {
+        dispachData(addNewEmployee_action(getRandomEmployee()))
+
+        const [lastSort, lastOrder] = sortOrder;
+        dispachData(sortEmployees_action(lastSort, lastOrder));
+    }
 
     return (
         <div className='page-list'>
@@ -68,7 +74,7 @@ function TablePagesList() {
                 <button onClick={() => page < pagesList.length && setPage(p => p + 1)}>{'>'}</button>
             </nav>
 
-            <button onClick={() => dispachData(addNewEmployee_action(getRandomEmployee()))}>Test tool</button>
+            <button onClick={testTool}>Test tool</button>
         </div>
     );
 }

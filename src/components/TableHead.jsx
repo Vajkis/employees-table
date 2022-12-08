@@ -6,7 +6,7 @@ import Chevron from "./Chevron";
 
 function TableHead() {
 
-    const { dispachData, isCheck, setIsCheck, pagesList, page, setPage, dispachPagesList } = useContext(DataContext);
+    const { dispachData, isCheck, setIsCheck, pagesList, page, setPage, dispachPagesList, sortOrder, setSortOrder } = useContext(DataContext);
 
     const check = e => {
         setIsCheck(e.target.checked);
@@ -41,10 +41,8 @@ function TableHead() {
 
     }, [isCheck, page, pagesList, setIsCheck, setPage]);
 
-    const [sortOrder, setSortOrder] = useState(['', 0]);
-
     const sort = sortBy => {
-        const [lastSort, lastOrder] = sortOrder
+        const [lastSort, lastOrder] = sortOrder;
 
         if (lastSort === sortBy && lastOrder === -1) {
             dispachData(sortEmployees_action(''));
