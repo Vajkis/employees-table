@@ -9,11 +9,8 @@ function TableBody() {
 
     useEffect(() => {
         dispachPagesList(checkAll_action(page, false));
-    }, [page, dispachPagesList]);
-
-    useEffect(() => {
         dispachPagesList(createPages_action(data));
-    }, [data, dispachPagesList]);
+    }, [page, dispachPagesList]);
 
     const check = (id, e) => {
         const c = e.target.checked;
