@@ -29,18 +29,17 @@ function TableBody() {
     const [age, setAge] = useState('');
     const [city, setCity] = useState('');
 
-    useEffect(() => {
-        if (pagesList[page - 1]?.some(e => e.focus)) {
-            const focusedEmployee = [...pagesList[page - 1]].filter(e => e.focus)[0];
-
-            setName(focusedEmployee.name);
-            setAge(focusedEmployee.age);
-            setCity(focusedEmployee.city);
-        }
-    }, [page, pagesList]);
-
     const edit = id => {
+        const focusedEmployee = pagesList[page - 1].filter(e => e.id === id)[0];
+
+        console.log(focusedEmployee);
+
+        setName(focusedEmployee.name);
+        setAge(focusedEmployee.age);
+        setCity(focusedEmployee.city);
+
         setNotifications([]);
+
         dispachPagesList(focusEmployee_action(id, page));
     }
 
@@ -71,6 +70,7 @@ function TableBody() {
     }
 
     const focusEmployee = e => {
+
         return (
             <tr key={e.id}>
                 <td>
@@ -85,7 +85,7 @@ function TableBody() {
                     <select value={city} onChange={event => setCity(event.target.value)}>
                         <option value='Vilnius'>Vilnius</option>
                         <option value='Kaunas'>Kaunas</option>
-                        <option value='Klaipeda'>Klaipeda</option>
+                        <option value='Klaipėda'>Klaipėda</option>
                     </select>
                 </td>
                 <td>
