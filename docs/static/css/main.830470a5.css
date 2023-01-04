@@ -33,10 +33,6 @@ body {
     }
 }
 
-.hide {
-    display: none
-}
-
 .background {
     background-image: linear-gradient(45deg, #4458ce, #c551bf);
     height: 100%;
@@ -345,4 +341,4 @@ select {
     text-align: center
 }
 
-/*# sourceMappingURL=main.a4d72050.css.map*/
+/*# sourceMappingURL=main.830470a5.css.map*/
