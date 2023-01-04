@@ -37,7 +37,7 @@ function App() {
       notifications,
       setNotifications
     }}>
-      <Notifications />
+      {notifications.length ? <Notifications /> : null}
       <NewData />
       <Table />
       <TablePagesList />
