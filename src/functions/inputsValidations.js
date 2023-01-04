@@ -1,5 +1,7 @@
 function inputsValidation(input, type) {
-    input = input.trim();
+    if (typeof input === 'string') {
+        input = input.trim();
+    }
 
     let payload = {
         value: input,
