@@ -1,26 +1,32 @@
-import { useState } from "react";
 import { useContext, useRef } from "react";
 import { addNewEmployee_action, sortEmployees_action } from "../actions/dataActions";
 import getId from "../functions/getId";
+import inputsValidation from "../functions/inputsValidations";
 import DataContext from "./DataContext";
 
 function NewData() {
 
-    const { dispachData, sortOrder } = useContext(DataContext);
-
-    const [show, setShow] = useState(false);
+    const { dispachData, sortOrder, setNotifications } = useContext(DataContext);
 
     const nameRef = useRef();
     const ageRef = useRef();
     const selectRef = useRef();
 
-    const addNewEmployee = () => {
-        let name = nameRef.current.value;
-        let age = ageRef.current.value;
-        let city = selectRef.current.value;
 
-        if (name.trim() && age && city) {
-            setShow(false);
+    const addNewEmployee = () => {
+        setNotifications([]);
+
+        const name = nameRef.current.value;
+        const age = ageRef.current.value;
+        const city = selectRef.current.value;
+
+        const nameValidation = inputsValidation(name, 'name');
+        const ageValidation = inputsValidation(age, 'age');
+
+        const isName = !nameValidation.error;
+        const isAge = !ageValidation.error;
+
+        if (isName && isAge && city) {
 
             dispachData(addNewEmployee_action({
                 id: getId(),
@@ -39,15 +45,22 @@ function NewData() {
             ageRef.current.value = '';
             selectRef.current.value = '';
         } else {
-            setShow(true);
+            if (!isName) {
+                setNotifications(n => [...n, nameValidation.notification]);
+            }
+
+            if (!isAge) {
+                setNotifications(n => [...n, ageValidation.notification]);
+            }
+
+            if (!city) {
+                setNotifications(n => [...n, 'city not selected']);
+            }
         }
     }
 
-
     return (
         <>
-            <div className={show ? 'notification' : 'notification hide'}>All inputs must be not empty!</div>
-
             <div className='new-data'>
 
                 <input ref={nameRef} type='text' placeholder='Name' onKeyUp={e => e.key === 'Enter' && addNewEmployee()} />

@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { deleteEmployee_action, saveEdit_action } from "../actions/dataActions";
 import { cancelEdit_action, checkAll_action, checkEmployee_action, createPages_action, focusEmployee_action } from "../actions/pagesListActions";
+import inputsValidation from "../functions/inputsValidations";
 import DataContext from "./DataContext";
 
 function TableBody() {
 
-    const { data, dispachData, setIsCheck, pagesList, dispachPagesList, page } = useContext(DataContext);
+    const { data, dispachData, setIsCheck, pagesList, dispachPagesList, page, setNotifications } = useContext(DataContext);
 
     useEffect(() => {
         dispachPagesList(checkAll_action(page, false));
@@ -38,6 +39,32 @@ function TableBody() {
         }
     }, [page, pagesList]);
 
+    const save = id => {
+        setNotifications([]);
+
+        const nameValidation = inputsValidation(name, 'name');
+        const ageValidation = inputsValidation(age, 'age');
+
+        const isName = !nameValidation.error;
+        const isAge = !ageValidation.error;
+
+        if (isName && isAge && city) {
+            dispachData(saveEdit_action(id, { name, age, city }));
+        } else {
+            if (!isName) {
+                setNotifications(n => [...n, nameValidation.notification]);
+            }
+
+            if (!isAge) {
+                setNotifications(n => [...n, ageValidation.notification]);
+            }
+
+            if (!city) {
+                setNotifications(n => [...n, 'city not selected']);
+            }
+        }
+    }
+
     const focusEmployee = e => {
         return (
             <tr key={e.id}>
@@ -58,7 +85,7 @@ function TableBody() {
                 </td>
                 <td>
                     <button onClick={() => dispachPagesList(cancelEdit_action(page))}>Cancel</button>
-                    <button onClick={() => dispachData(saveEdit_action(e.id, { name, age, city }))}>Save</button>
+                    <button onClick={() => save(e.id)}>Save</button>
                 </td>
             </tr>
         );

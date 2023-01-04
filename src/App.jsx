@@ -7,6 +7,7 @@ import Table from './components/Table';
 import TablePagesList from './components/TablePagesList';
 import data_reducer from './reducers/dataReducer';
 import pagesList_reducer from './reducers/pagesListReducer';
+import Notifications from './components/Notifications';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
   const [page, setPage] = useState(1);
   const [isCheck, setIsCheck] = useState(false);
   const [sortOrder, setSortOrder] = useState(['', 0]);
+  const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
     dispachData(loadData_action());
@@ -31,8 +33,11 @@ function App() {
       page,
       setPage,
       sortOrder,
-      setSortOrder
+      setSortOrder,
+      notifications,
+      setNotifications
     }}>
+      <Notifications />
       <NewData />
       <Table />
       <TablePagesList />
