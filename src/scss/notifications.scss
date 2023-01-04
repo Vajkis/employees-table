@@ -1,0 +1,23 @@
+.notifications-container {
+    margin: 0 auto 20px;
+    width: 680px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+
+    @media (max-width: 425px) {
+        width: 394px;
+    }
+
+    .notification {
+        text-align: center;
+        background-color: $transparentPrimaryColor;
+        color: $secondaryColor;
+        padding: 10px;
+        border-radius: 8px;
+
+    }
+
+}
