@@ -323,66 +323,26 @@ select {
     padding: 3px 8px
 }
 
-.notification {
-    -webkit-animation: scaleup .3s ease-in;
-    animation: scaleup .3s ease-in;
-    background-color: rgba(52, 48, 73, .4);
-    border-radius: 8px;
-    color: #f6f6f6;
+.notifications-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
     margin: 0 auto 20px;
-    padding: 10px;
-    text-align: center;
     width: 680px
 }
 
 @media(max-width:425px) {
-    .notification {
+    .notifications-container {
         width: 394px
     }
 }
 
-@-webkit-keyframes scaleup {
-    0% {
-        color: transparent;
-        max-height: 0;
-        padding: 0 10px;
-        -webkit-transform: translateY(38px);
-        transform: translateY(38px)
-    }
-
-    80% {
-        color: transparent
-    }
-
-    to {
-        color: #f6f6f6;
-        max-height: 18px;
-        padding: 10px;
-        -webkit-transform: translateY(0);
-        transform: translateY(0)
-    }
+.notifications-container .notification {
+    background-color: rgba(52, 48, 73, .4);
+    border-radius: 8px;
+    color: #f6f6f6;
+    padding: 10px;
+    text-align: center
 }
 
-@keyframes scaleup {
-    0% {
-        color: transparent;
-        max-height: 0;
-        padding: 0 10px;
-        -webkit-transform: translateY(38px);
-        transform: translateY(38px)
-    }
-
-    80% {
-        color: transparent
-    }
-
-    to {
-        color: #f6f6f6;
-        max-height: 18px;
-        padding: 10px;
-        -webkit-transform: translateY(0);
-        transform: translateY(0)
-    }
-}
-
-/*# sourceMappingURL=main.4efbf18b.css.map*/
+/*# sourceMappingURL=main.a4d72050.css.map*/
