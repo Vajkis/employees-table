@@ -39,6 +39,11 @@ function TableBody() {
         }
     }, [page, pagesList]);
 
+    const edit = id => {
+        setNotifications([]);
+        dispachPagesList(focusEmployee_action(id, page));
+    }
+
     const save = id => {
         setNotifications([]);
 
@@ -104,7 +109,7 @@ function TableBody() {
                 <td>{e.age}</td>
                 <td>{e.city}</td>
                 <td>
-                    <button onClick={() => dispachPagesList(focusEmployee_action(e.id, page))}>Edit</button>
+                    <button onClick={() => edit(e.id)}>Edit</button>
                     <button onClick={() => dispachData(deleteEmployee_action(e.id))}>Delete</button>
                 </td>
             </tr>
