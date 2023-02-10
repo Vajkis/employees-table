@@ -1,12 +1,21 @@
 import { useContext, useState } from "react";
 import { addNewEmployee_action, sortEmployees_action, } from "../actions/dataActions";
+import { createPages_action } from "../actions/pagesListActions";
 import getRandomEmployee from "../functions/getRandomEmployee";
 import DataContext from "./DataContext";
 
 function TablePagesList() {
 
-    const { dispachData, pagesList, page, setPage, sortOrder } = useContext(DataContext);
-    const [pageSize, setPageSize] = useState('');
+    const { dispachData, pagesList, page, setPage, sortOrder, dispachPagesList, data } = useContext(DataContext);
+    const [pageSize, setPageSize] = useState('')
+
+    const handlePageSize = e => {
+        const newPageSize = e.target.value;
+        setPageSize(newPageSize);
+
+        localStorage.setItem('pageSize', newPageSize);
+        dispachPagesList(createPages_action(data));
+    }
 
     const testTool = () => {
         dispachData(addNewEmployee_action(getRandomEmployee()))
@@ -17,7 +26,7 @@ function TablePagesList() {
 
     return (
         <div className='page-list'>
-            <select value={pageSize} onChange={e => setPageSize(e.target.value)}>
+            <select value={pageSize} onChange={handlePageSize}>
                 <option value=''>Page size</option>
                 <option value='10'>10</option>
                 <option value='25'>25</option>
